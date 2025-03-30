@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://lvx40uy8esgc"]
+
+[ext_resource type="Texture2D" uid="uid://b2d0wrrci6y7y" path="res://Ye_Oldy_Knight_Guy.png" id="1_8nw1p"]
+[ext_resource type="Script" path="res://Player.gd" id="1_e7erx"]
+[ext_resource type="Script" path="res://player_input.gd" id="2_xbtjc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2gey"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(34, 0, 17, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc3ic"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(32, 23, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot56i"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(48, 23, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vxp1"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(64, 23, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol782"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(80, 23, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnufi"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(96, 23, 16, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77p3v"]
+atlas = ExtResource("1_8nw1p")
+region = Rect2(112, 23, 16, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yoldh"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2gey")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lc3ic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot56i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vxp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol782")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnufi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77p3v")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvsb4"]
+radius = 9.0
+height = 26.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_e7erx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yoldh")
+animation = &"new_animation_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lvsb4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("2_xbtjc")
