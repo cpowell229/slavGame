@@ -28,6 +28,10 @@ func move(direction):
 		Globals.InputDirection.DOWN:
 			new_vel.y = 1
 	velocity = new_vel * speed
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
 
 func _physics_process(delta: float) -> void:
 	# If the attack action is triggered and we're not already attacking, play the attack animation.

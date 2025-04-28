@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtngqu7yse0v3"]
+[gd_scene load_steps=17 format=4 uid="uid://dtngqu7yse0v3"]
 
 [ext_resource type="Texture2D" uid="uid://cn5q0qqii2qki" path="res://TX Tileset Grass.png" id="1_qislu"]
 [ext_resource type="Texture2D" uid="uid://cghyfim1alq6n" path="res://TX Props.png" id="2_gr0e4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://main.gd" id="4_0bgif"]
 [ext_resource type="PackedScene" uid="uid://lvx40uy8esgc" path="res://character.tscn" id="4_8fnex"]
 [ext_resource type="PackedScene" uid="uid://5xbg74teimn8" path="res://coin.tscn" id="5_sw6sj"]
+[ext_resource type="AudioStream" uid="uid://h2pul54b6j6m" path="res://pixel-playground-color-parade-main-version-25382-01-43.mp3" id="7_0h8p5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_51gbr"]
 texture = ExtResource("1_qislu")
@@ -2133,3 +2134,6 @@ scale = Vector2(0.025, 0.025)
 [node name="Area2D3" parent="TileMapLayer" instance=ExtResource("5_sw6sj")]
 position = Vector2(-340.5, 134)
 scale = Vector2(0.025, 0.025)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_0h8p5")

@@ -1,10 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://m3erdcnivh0b"]
+[gd_scene load_steps=16 format=3 uid="uid://m3erdcnivh0b"]
 
+[ext_resource type="Script" path="res://vampire.gd" id="1_kmosg"]
 [ext_resource type="Texture2D" uid="uid://dtwdcg03v7wnd" path="res://vampire-m-002.png" id="1_vjhv7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11dd6"]
 atlas = ExtResource("1_vjhv7")
 region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqiv4"]
+atlas = ExtResource("1_vjhv7")
+region = Rect2(0, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htwmg"]
+atlas = ExtResource("1_vjhv7")
+region = Rect2(24, 64, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giw07"]
+atlas = ExtResource("1_vjhv7")
+region = Rect2(48, 64, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1ala"]
 atlas = ExtResource("1_vjhv7")
@@ -35,6 +48,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_11dd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqiv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htwmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giw07")
 }],
 "loop": true,
 "name": &"default",
@@ -72,11 +94,24 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v411q"]
 height = 40.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrfhs"]
+radius = 124.403
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_kmosg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_luwrq")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_v411q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rrfhs")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
